@@ -1,9 +1,10 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 import Grid from "gridfs-stream";
-const DB_HOST = process.env.DAT_HOST ? process.env.DAT_HOST : "localhost";
-const DB_PORT = process.env.DAT_PORT ? process.env.DAT_PORT : 27017;
 
 let GFS: any;
+
+const DB_HOST = process.env.DAT_HOST ? process.env.DAT_HOST : "localhost";
+const DB_PORT = process.env.DAT_PORT ? process.env.DAT_PORT : 27017;
 
 export const promise = mongoose.connect(
   `mongodb://${DB_HOST}:${DB_PORT}/images`,

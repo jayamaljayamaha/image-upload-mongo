@@ -1,6 +1,6 @@
 import express from "express";
 import { Request, Response, NextFunction } from "express";
-import upload from "../storage/MulterStorage";
+import getStorage from "../storage/MulterStorage";
 import * as GridFsService from "../services/GridFsService";
 import * as GetImages from "../middlewares/GetImages";
 
@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post(
   "/create",
-  upload.single("file"),
+  getStorage().single("file"),
   (req: Request, res: Response, next: NextFunction) => {
     delete req.file?.id;
     const file = {
@@ -55,7 +55,7 @@ router.patch(
         });
       });
   },
-  upload.single("file"),
+  getStorage().single("file"),
   (req: Request, res: Response, next: NextFunction) => {
     delete req.file?.id;
     const file = {
